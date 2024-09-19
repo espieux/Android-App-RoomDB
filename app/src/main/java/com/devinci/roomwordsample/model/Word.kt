@@ -15,4 +15,5 @@ data class Word(
     fun getWord(): String {
         return mWord
     }
+
 }

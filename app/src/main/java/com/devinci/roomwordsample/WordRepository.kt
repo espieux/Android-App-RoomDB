@@ -27,6 +27,12 @@ class WordRepository(application: Application?) {
         }
     }
 
+    fun deleteWord(word: Word?) {
+        WordRoomDatabase.databaseWriteExecutor.execute {
+            mWordDao!!.deleteWord(word!!)
+        }
+    }
+
     // Room exécute toutes les requêtes sur un thread distinct.
     // Les données LiveData observées avertiront l'observateur lorsque les données auront changé.
     fun getAllWords(): LiveData<List<Word>> {
