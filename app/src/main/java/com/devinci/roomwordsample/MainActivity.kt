@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Initialize ViewModel
+        mWordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
 
-        val mAdapter = WordListAdapter()
+        val mAdapter = WordListAdapter(mWordViewModel)
         binding.contentMain.recyclerview.adapter = mAdapter
         binding.contentMain.recyclerview.setHasFixedSize(true)
 
-        // Initialize ViewModel
-        mWordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
+
 
         mWordViewModel.getAllWords().observe(this) { words: List<Word> ->
             // Update the cached copy of the words in the adapter.
