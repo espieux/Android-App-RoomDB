@@ -52,19 +52,19 @@ dependencies {
 // Vous devrez probablement mettre à jour les numéros de version dans build.gradle (Project)
 // Composant de base de données Room
     val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
 // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 // optional - Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:$room_version")
+    implementation(libs.androidx.room.ktx)
 // Composants de cycle de vie
     val lifecycle_version = "2.7.0"
 // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 // Annotation processor
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    kapt(libs.androidx.lifecycle.compiler)
+    implementation(libs.androidx.fragment.ktx)
 }

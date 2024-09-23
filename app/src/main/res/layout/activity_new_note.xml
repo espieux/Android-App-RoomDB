@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     android:orientation="vertical"
-    android:padding="32dp">
+    android:padding="32dp"> <!-- Set background to dark -->
 
     <EditText
         android:id="@+id/edit_note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"/>
+        android:background="@drawable/rounded_edittext"
+        android:hint="Title"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#959595" />
 
     <EditText
         android:id="@+id/edit_note_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Note Text"/>
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Note"
+        android:minHeight="150dp"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#959595" /> <!-- Similar to the large text area in the image -->
 
     <Button
         android:id="@+id/button_save_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Note"/>
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_button_green"
+        android:padding="12dp"
+        android:text="Mettre à jour"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 </LinearLayout>

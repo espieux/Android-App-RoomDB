@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.devinci.roomwordsample.adapter.NoteListAdapter
 import com.devinci.roomwordsample.databinding.ActivityMainBinding
 import com.devinci.roomwordsample.model.Note
@@ -35,6 +37,10 @@ class MainActivity : AppCompatActivity(), NoteListAdapter.OnNoteClickListener {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
         }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val layoutManager = GridLayoutManager(this, 2)  // Ensure 2 items per row
+        recyclerView.layoutManager = layoutManager
 
         // Observe LiveData from ViewModel
         noteViewModel.allNotes.observe(this) { notes ->
