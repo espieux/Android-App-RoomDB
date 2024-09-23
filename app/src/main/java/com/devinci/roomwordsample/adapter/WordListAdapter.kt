@@ -12,9 +12,18 @@ import com.devinci.roomwordsample.R
 import com.devinci.roomwordsample.WordViewModel
 import com.devinci.roomwordsample.model.Word
 
-class WordListAdapter(private val mWordViewModel: WordViewModel) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
+class WordListAdapter(
+    private val mWordViewModel: WordViewModel,
+    private val listener: OnWordClickListener
+) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private var mWords: List<Word> = emptyList() // Copie en cache des mots
+
+    interface OnWordClickListener {
+        fun onEditClick(word: Word)
+        fun onDeleteClick(word: Word)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val itemView: View = LayoutInflater.from(parent.context).inflate(
             R.layout.recyclerview_item, parent, false
@@ -25,8 +34,13 @@ class WordListAdapter(private val mWordViewModel: WordViewModel) : RecyclerView.
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = mWords[position]
         holder.wordItemView.text = current.getWord()
+
         holder.deleteButton.setOnClickListener {
-            mWordViewModel.deleteWord(current)
+            listener.onDeleteClick(current)
+        }
+
+        holder.editButton.setOnClickListener {
+            listener.onEditClick(current)
         }
     }
 
@@ -45,10 +59,11 @@ class WordListAdapter(private val mWordViewModel: WordViewModel) : RecyclerView.
     class WordViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView
         val deleteButton: ImageButton
+        val editButton: ImageButton
 
         init {
             wordItemView = itemView.findViewById(R.id.textView)
             deleteButton = itemView.findViewById(R.id.deleteButton)
-        }
+            editButton = itemView.findViewById(R.id.editButton)}
     }
 }

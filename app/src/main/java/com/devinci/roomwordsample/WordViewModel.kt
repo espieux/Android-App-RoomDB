@@ -23,6 +23,10 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         mRepository.deleteWord(word)
     }
 
+    fun updateWord(word: Word?) {
+        mRepository.updateWord(word)
+    }
+
     fun getAllWords(): LiveData<List<Word>> {
         return mAllWords
     }
