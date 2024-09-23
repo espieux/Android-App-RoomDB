@@ -16,19 +16,28 @@ public class NewWordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_new_word)
 
         mEditWordView = findViewById(R.id.edit_word)
 
+        if (intent.hasExtra("word_id")) {
+            // This is an edit operation
+            val wordText = intent.getStringExtra("word_text")
+            mEditWordView.setText(wordText)
+        }
+
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(mEditWordView.getText())) {
+            if (TextUtils.isEmpty(mEditWordView.text)) {
                 setResult(RESULT_CANCELED, replyIntent)
             } else {
-                val word = mEditWordView.getText().toString()
-                replyIntent.putExtra(EXTRA_REPLY, word)
+                val wordText = mEditWordView.text.toString()
+                replyIntent.putExtra(EXTRA_REPLY, wordText)
+                if (intent.hasExtra("word_id")) {
+                    val wordId = intent.getIntExtra("word_id", -1)
+                    replyIntent.putExtra("word_id", wordId)
+                }
                 setResult(RESULT_OK, replyIntent)
             }
             finish()

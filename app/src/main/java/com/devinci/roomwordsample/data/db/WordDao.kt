@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.devinci.roomwordsample.model.Word
 
 
@@ -20,6 +21,9 @@ interface WordDao {
 
     @Delete
     fun deleteWord(word: Word)
+
+    @Update
+    fun updateWord(word: Word)
 
     @Query("SELECT * FROM word_table ORDER BY word ASC")
     fun getAlphabetizedWords(): LiveData<List<Word>>
