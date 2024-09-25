@@ -20,8 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:text="Title"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="23sp"
+            android:fontFamily="casual"
             android:textStyle="bold" /> <!-- Added margin to avoid overlap -->
 
         <!-- Content of the Note -->
@@ -29,6 +31,7 @@
             android:id="@+id/textViewText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Note"
             android:layout_marginBottom="8dp"
             android:textColor="@android:color/white"
             android:textSize="16sp" /> <!-- Added margin -->
